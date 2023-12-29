@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_check/controller/navigations.dart';
 import 'package:flutter_check/utils/constants/spaces.dart';
+import 'package:flutter_check/view/home_screen/home_screen.dart';
 import 'package:flutter_check/view/login_page/registration_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -47,7 +48,9 @@ class LoginScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                navigateReplacementTo(context, HomeScreen());
+              },
               style: ElevatedButton.styleFrom(
                 primary: Colors.red,
               ),

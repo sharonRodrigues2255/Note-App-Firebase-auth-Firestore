@@ -4,7 +4,9 @@ import 'package:fade_out_particle/fade_out_particle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_check/controller/navigations.dart';
 import 'package:flutter_check/controller/splash_screen_controller.dart';
+import 'package:flutter_check/view/home_screen/home_screen.dart';
 import 'package:flutter_check/view/login_page/login_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Provider.of<SplashScreenController>(context, listen: false);
     provider.logoAnimation();
     Timer(Duration(seconds: 5), () {
-      navigateTo(context, LoginScreen());
+      navigateReplacementTo(context, LoginScreen());
     });
     super.initState();
   }
@@ -37,18 +39,21 @@ class _SplashScreenState extends State<SplashScreen> {
               Visibility(
                   visible: value.isLogoVisible,
                   replacement: FadeOutParticle(
-                    duration: Duration(seconds: 2),
+                    duration: Duration(seconds: 3),
                     disappear: true,
                     child: Text(
-                      "Valuing Life",
-                      style: TextStyle(
-                          fontSize: 32,
-                          letterSpacing: 8,
-                          fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 127, 12, 4)),
+                      "About 2023",
+                      style: GoogleFonts.merriweather(
+                          color: Colors.black, fontSize: 32),
                     ),
                   ),
-                  child: Image.asset("assets/gristone_app_icon.png")),
+                  child: Column(
+                    children: [
+                      Text("Powered by"),
+                      SizedBox(
+                          child: Image.asset("assets/gristone_app_icon.png")),
+                    ],
+                  )),
             ],
           );
         },
