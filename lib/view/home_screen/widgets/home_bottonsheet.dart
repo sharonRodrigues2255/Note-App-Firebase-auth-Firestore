@@ -26,7 +26,7 @@ void showHOmeBottmsheet(BuildContext context) {
               onPressed: () async {
                 SharedPreferences preferences =
                     await SharedPreferences.getInstance();
-                preferences.setBool("logged", false);
+                preferences.setBool("loged", false);
                 navigateReplacementTo(context, LoginScreen());
               },
               style: ElevatedButton.styleFrom(
