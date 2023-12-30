@@ -2,14 +2,28 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_check/controller/login_controller.dart';
 import 'package:flutter_check/controller/navigations.dart';
+import 'package:flutter_check/main.dart';
 import 'package:flutter_check/utils/constants/spaces.dart';
 import 'package:flutter_check/view/login_page/registration_screen.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatelessWidget {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
+  void initState() {
+    textToSpeechService.speak("Login with email and password");
+    super.initState();
+  }
+
+  TextEditingController emailController = TextEditingController();
+
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

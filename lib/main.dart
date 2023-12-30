@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_check/controller/login_controller.dart';
+import 'package:flutter_check/controller/share_a_memory_controller.dart';
 import 'package:flutter_check/controller/splash_screen_controller.dart';
+import 'package:flutter_check/controller/text_to_speech_controller.dart';
 import 'package:flutter_check/view/splash_screen/splash_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +18,8 @@ void main() async {
   runApp(const MyApp());
 }
 
+final TextToSpeechService textToSpeechService = TextToSpeechService();
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -23,7 +27,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => SplashScreenController()),
-        ChangeNotifierProvider(create: (context) => LoginController())
+        ChangeNotifierProvider(create: (context) => LoginController()),
+        ChangeNotifierProvider(create: (context) => ShareAMemoryController())
       ],
       child: MaterialApp(
         title: 'Gritsone task',

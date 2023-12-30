@@ -16,6 +16,7 @@ class LoginController with ChangeNotifier {
         email: emailAddress,
         password: password,
       );
+      preferences.setString("username", emailAddress);
       preferences.setBool("loged", true);
       navigateReplacementTo(context, HomeScreen());
     } on FirebaseAuthException catch (e) {

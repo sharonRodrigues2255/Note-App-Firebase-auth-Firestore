@@ -4,6 +4,7 @@ import 'package:fade_out_particle/fade_out_particle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_check/controller/navigations.dart';
 import 'package:flutter_check/controller/splash_screen_controller.dart';
+import 'package:flutter_check/controller/text_to_speech_controller.dart';
 import 'package:flutter_check/view/home_screen/home_screen.dart';
 import 'package:flutter_check/view/login_page/login_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,12 +20,14 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
+    TextToSpeechService().speak("Welcome user");
     final provider =
         Provider.of<SplashScreenController>(context, listen: false);
     provider.logoAnimation();
     Timer(Duration(seconds: 5), () {
       provider.navigationfromSplash(context);
     });
+
     super.initState();
   }
 
