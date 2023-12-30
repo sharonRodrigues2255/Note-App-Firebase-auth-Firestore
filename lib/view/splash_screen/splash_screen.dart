@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Provider.of<SplashScreenController>(context, listen: false);
     provider.logoAnimation();
     Timer(Duration(seconds: 5), () {
-      navigateReplacementTo(context, LoginScreen());
+      provider.navigationfromSplash(context);
     });
     super.initState();
   }

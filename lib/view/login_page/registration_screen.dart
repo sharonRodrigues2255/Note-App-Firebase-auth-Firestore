@@ -1,15 +1,20 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_check/controller/login_controller.dart';
 import 'package:flutter_check/controller/navigations.dart';
 import 'package:flutter_check/utils/constants/spaces.dart';
 import 'package:flutter_check/view/home_screen/home_screen.dart';
 import 'package:flutter_check/view/login_page/login_screen.dart';
+import 'package:provider/provider.dart';
 
 class RegistrationScreen extends StatelessWidget {
-  const RegistrationScreen({super.key});
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  RegistrationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LoginController>(context);
     return Scaffold(
       body: Center(
         child: Column(
@@ -29,6 +34,7 @@ class RegistrationScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextFormField(
+                controller: emailController,
                 decoration: InputDecoration(
                   labelText: 'Email',
                   border: OutlineInputBorder(),
@@ -39,6 +45,7 @@ class RegistrationScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextFormField(
+                controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: 'Password',
@@ -49,7 +56,9 @@ class RegistrationScreen extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                navigateReplacementTo(context, HomeScreen());
+                provider.registerWithemailandpassword(
+                    emailController.text, passwordController.text,
+                    context: context);
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.red,

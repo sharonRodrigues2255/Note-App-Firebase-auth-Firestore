@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "825841609274",
+    "project_id": "griststone-task",
+    "storage_bucket": "griststone-task.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825841609274:android:dfa114292e1d9439a9e303",
+        "android_client_info": {
+          "package_name": "com.example.flutter_check"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbbq-fqJ7s6OP1mhSH9C-SXa5az_eHJrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
