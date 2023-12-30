@@ -114,9 +114,13 @@ class SubmitButton extends StatelessWidget {
             ? () async {
                 await Provider.of<ShareAMemoryController>(context,
                         listen: false)
-                    .addAmemmory(note: note, title: title ?? "");
-                popScreen(context);
+                    .addAmemmory(
+                        note: note, title: title ?? "", context: context);
+
                 speakFeedback("Memory submitted successfully");
+                if (Navigator.canPop(context)) {
+                  popScreen(context);
+                }
               }
             : null,
         style: ElevatedButton.styleFrom(
