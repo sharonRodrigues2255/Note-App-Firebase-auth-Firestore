@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_check/controller/homepagecontroller.dart';
 import 'package:flutter_check/controller/login_controller.dart';
 import 'package:flutter_check/controller/share_a_memory_controller.dart';
 import 'package:flutter_check/controller/splash_screen_controller.dart';
@@ -28,12 +29,12 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => SplashScreenController()),
         ChangeNotifierProvider(create: (context) => LoginController()),
-        ChangeNotifierProvider(create: (context) => ShareAMemoryController())
+        ChangeNotifierProvider(create: (context) => ShareAMemoryController()),
+        ChangeNotifierProvider(create: (context) => HomepageController())
       ],
       child: MaterialApp(
         title: 'Gritsone task',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
         home: SplashScreen(),

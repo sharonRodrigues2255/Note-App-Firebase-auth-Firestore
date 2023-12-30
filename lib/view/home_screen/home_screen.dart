@@ -1,12 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_check/controller/homepagecontroller.dart';
 import 'package:flutter_check/controller/navigations.dart';
 import 'package:flutter_check/main.dart';
 import 'package:flutter_check/utils/constants/spaces.dart';
 import 'package:flutter_check/utils/constants/texts.dart';
+import 'package:flutter_check/view/home_screen/widgets/home_bottonsheet.dart';
+import 'package:flutter_check/view/home_screen/widgets/post_widgets.dart';
 import 'package:flutter_check/view/post_view/post_view.dart';
 import 'package:flutter_check/view/share_a_memory_screen/share_a_memory_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key});
@@ -24,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<HomepageController>(context);
     final Stream<QuerySnapshot> notesStream =
         FirebaseFirestore.instance.collection('notes').snapshots();
     return Scaffold(
@@ -34,6 +39,16 @@ class _HomeScreenState extends State<HomeScreen> {
           "About 2023",
           style: GoogleFonts.merriweather(color: Colors.white),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                showHOmeBottmsheet(context);
+              },
+              icon: Icon(
+                Icons.settings,
+                color: Colors.white,
+              ))
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -131,44 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             );
                           },
-                          child: Card(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.cyanAccent,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              width: double.infinity,
-                              height: 200,
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          data['username'],
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Spacer(),
-                                        Text("Date: ${data['date']}"),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(12.0),
-                                    child: Text(
-                                      data['note'],
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 6,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
+                          child: PostWidget(data: data),
                         ),
                       );
                     },
